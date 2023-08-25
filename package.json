@@ -1,0 +1,24 @@
+{
+  "name": "react-useranalytics",
+  "version": "1.0.0",
+  "description": "\"React user analytics to track user page views\"",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "\"user",
+    "tracking",
+    "react-user-tracking",
+    "usernalaytics",
+    "usertracking",
+    "react-useranalytics\""
+  ],
+  "author": "Vivek Garg",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
