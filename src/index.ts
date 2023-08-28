@@ -71,9 +71,9 @@ class UserAnalytics {
                             endTime: new Date().toISOString(),
                             duration: userSession.endSession(),
                             latitude: locationManager.getUserLocation()?.[0] ?? null,
-                            longitude:locationManager.getUserLocation()?.[1] ?? null
+                            longitude:locationManager.getUserLocation()?.[1] ?? null,
+                            userId: this._userIdValue,
                         },
-                        userId: this._userIdValue,
                     }),
                 });
             } catch (error) {
