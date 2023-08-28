@@ -1,6 +1,6 @@
 {
   "name": "react-useranalytics",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "\"React user analytics to track user page views\"",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,9 @@
   "keywords": [
     "\"user",
     "tracking",
+    "user-tracking",
+    "track-react-user",
+    "user-tracking",
     "react-user-tracking",
     "usernalaytics",
     "usertracking",

@@ -72,7 +72,7 @@ class UserAnalytics {
                             duration: userSession.endSession(),
                             latitude: locationManager.getUserLocation()?.[0] ?? null,
                             longitude:locationManager.getUserLocation()?.[1] ?? null,
-                            userId: this._userIdValue,
+                            user: this._userIdValue,
                         },
                     }),
                 });
