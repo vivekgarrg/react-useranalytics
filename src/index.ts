@@ -70,7 +70,8 @@ class UserAnalytics {
                             )?.startTime,
                             endTime: new Date().toISOString(),
                             duration: userSession.endSession(),
-                            location: locationManager.getUserLocation() ?? null,
+                            latitude: locationManager.getUserLocation()?.[0] ?? null,
+                            longitude:locationManager.getUserLocation()?.[1] ?? null
                         },
                         userId: this._userIdValue,
                     }),
