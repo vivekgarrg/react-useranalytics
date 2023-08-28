@@ -76,6 +76,33 @@ yarn add react-useranalytics
    };
    ```
 
+## Response
+ ```json
+  "pages":"[{
+    "page":"page_url",
+    "duration":"page_duration",
+    "title":"page_title",
+    "subTitle":"page_subtitle"
+  },{
+    "page":"page_url",
+    "duration":"page_duration",
+    "title":"page_title",
+  },{
+    "page":"page_url",
+    "duration":"page_duration",
+    "title":"page_title",
+     "subTitle":"page_subtitle"
+  }
+  ]",
+  "session":"{
+    "startTime":"start_timestamp",
+    "endTime":"end_timestamp",
+    "duration":"session_duration",
+    "latitude":"latitude",
+    "longitude":"longitude",
+    "user":"userId",
+  }"
+ ```
 
 ## Support and Issues
 
