@@ -16,6 +16,7 @@ class UserAnalytics {
     private _userIdValue: string | undefined = undefined;
 
     public apiKey: string | null = null;
+    public apiCallTime: number = 30; //Minutes
 
     constructor() {
         userSession.startSession();
@@ -25,6 +26,13 @@ class UserAnalytics {
         } else {
             console.error("Page Visibility API is not supported in this browser.");
         }
+
+        const apiCallInterval = this.apiCallTime * 60000; // 1 minute in milliseconds
+        setInterval(() => {
+            this.handleUnload();
+            this.resetTime();
+            userSession.startSession();
+        }, apiCallInterval);
     }
 
     public setUserId(value: string) {
@@ -48,7 +56,7 @@ class UserAnalytics {
         if (this._currentPage) {
             this.calculateLogTime(this._currentPage);
         }
-        if (this.apiKey) {
+        if (this.apiKey && Object.keys(this._pageDuration).length > 0) {
             try {
                 fetch(this.apiKey, {
                     method: "POST",
@@ -71,7 +79,7 @@ class UserAnalytics {
                             endTime: new Date().toISOString(),
                             duration: userSession.endSession(),
                             latitude: locationManager.getUserLocation()?.[0] ?? null,
-                            longitude:locationManager.getUserLocation()?.[1] ?? null,
+                            longitude: locationManager.getUserLocation()?.[1] ?? null,
                             user: this._userIdValue,
                         },
                     }),
@@ -104,6 +112,14 @@ class UserAnalytics {
             });
         }
     };
+
+    private resetTime(): void {
+        this._pageDuration = {};
+        this._pageStartTime = {};
+        this._pageTitle = {};
+        this._pageSubtitle = {};
+        this._currentPage = undefined;
+    }
 }
 
 // Instantiate the class

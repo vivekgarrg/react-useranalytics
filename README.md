@@ -53,6 +53,7 @@ yarn add react-useranalytics
      const [userIdFlag, setUserIdFlag] = useState(true);
 
     userAnalytics.apiKey = "YOUR API URL";
+    userAnalytics.apiCallTime = 30; //@default 30 Minutes 
      useEffect(() => {
         if (userId && userIdFlag) {
             userAnalytics.setUserId(userId);

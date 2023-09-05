@@ -1,6 +1,6 @@
 {
   "name": "react-useranalytics",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "\"React user analytics to track user page views\"",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
