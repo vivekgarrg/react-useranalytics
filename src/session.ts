@@ -9,11 +9,11 @@ class SessionManager {
         const sessionData = {
             startTime: new Date().toISOString(),
         };
-        localStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+        sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
     }
 
     public endSession(): number | undefined {
-        const sessionDataStr = localStorage.getItem(this.sessionKey);
+        const sessionDataStr = sessionStorage.getItem(this.sessionKey);
         if (sessionDataStr) {
             const sessionData = JSON.parse(sessionDataStr);
             const endTime = new Date().toISOString();
@@ -22,7 +22,7 @@ class SessionManager {
                 sessionData.startTime,
                 endTime,
             );
-            localStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
+            sessionStorage.setItem(this.sessionKey, JSON.stringify(sessionData));
             return sessionData.duration;
         }
     }

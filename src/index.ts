@@ -74,7 +74,7 @@ class UserAnalytics {
                         }),
                         session: {
                             startTime: JSON.parse(
-                                localStorage.getItem("user_session") as string,
+                                sessionStorage.getItem("user_session") as string,
                             )?.startTime,
                             endTime: new Date().toISOString(),
                             duration: userSession.endSession(),
