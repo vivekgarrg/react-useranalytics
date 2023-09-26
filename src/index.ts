@@ -20,6 +20,7 @@ class UserAnalytics {
 
     constructor() {
         userSession.startSession();
+        locationManager.getUserLocation();
         window.addEventListener("beforeunload", this.handleUnload);
         if (typeof document.hidden !== "undefined") {
             document.addEventListener("visibilitychange", this.handleVisibilityChange);
@@ -51,7 +52,6 @@ class UserAnalytics {
     public logTime() {
         if (this._currentPage) this.calculateLogTime(this._currentPage);
     }
-
     private handleUnload = () => {
         if (this._currentPage) {
             this.calculateLogTime(this._currentPage);
@@ -78,8 +78,8 @@ class UserAnalytics {
                             )?.startTime,
                             endTime: new Date().toISOString(),
                             duration: userSession.endSession(),
-                            latitude: locationManager.getUserLocation()?.[0] ?? null,
-                            longitude: locationManager.getUserLocation()?.[1] ?? null,
+                            latitude: locationManager.latitude,
+                            longitude: locationManager.longitude,
                             user: this._userIdValue,
                         },
                     }),

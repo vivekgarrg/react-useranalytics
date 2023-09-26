@@ -1,9 +1,12 @@
 class LocationManager {
-    getUserLocation(): Array<string> | undefined {
+    public longitude: number | null = null;
+    public latitude: number | null = null;
+
+    getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    return this.handleSuccess(position);
+                    this.handleSuccess(position);
                 },
                 (error) => {
                     this.handleError(error);
@@ -18,7 +21,8 @@ class LocationManager {
     private handleSuccess(position: GeolocationPosition) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        return [latitude, longitude];
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     private handleError(error: GeolocationPositionError) {
