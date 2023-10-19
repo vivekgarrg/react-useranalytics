@@ -53,9 +53,7 @@ class UserAnalytics {
         if (this._currentPage) this.calculateLogTime(this._currentPage);
     }
     private handleUnload = () => {
-        if (this._currentPage) {
-            this.calculateLogTime(this._currentPage);
-        }
+        if (this._currentPage) this.calculateLogTime(this._currentPage);
         if (this.apiKey && Object.keys(this._pageDuration).length > 0) {
             try {
                 fetch(this.apiKey, {
@@ -103,13 +101,26 @@ class UserAnalytics {
 
     private handleVisibilityChange = () => {
         if (document.hidden) {
-            this.logTime();
+            const page = this._currentPage;
+            const title = this._pageTitle[page as string];
+            const subTitle = this._pageSubtitle[page as string];
+            const userId = this._userIdValue;
+            this.handleUnload();
+            this.resetTime();
+            this.set({
+                page: page as string,
+                title,
+                subTitle,
+            });
+            this.setUserId(userId as string);
         } else if (this._userIdValue && this._currentPage) {
             this.set({
                 page: this._currentPage,
                 title: this._pageTitle[this._currentPage],
                 subTitle: this._pageSubtitle[this._currentPage],
             });
+        } else {
+            userSession.startSession();
         }
     };
 
