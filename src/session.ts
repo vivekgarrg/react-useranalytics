@@ -30,7 +30,8 @@ class SessionManager {
     public calculateSessionDuration(startTime: string, endTime: string): number {
         const start = new Date(startTime);
         const end = new Date(endTime);
-        return (end.getTime() - start.getTime()) / 1000; // Session duration in seconds
+       const timeDuration =  (end.getTime() - start.getTime()) / 1000; // Session duration in seconds
+       return timeDuration > 1800 ? 1800 : timeDuration; 
     }
 }
 
